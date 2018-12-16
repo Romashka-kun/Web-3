@@ -19,7 +19,7 @@ $(document).ready(function () {
             question: "<i><b>(1)</b>Температура на поверхности Титана составляет около –180 градусов по шкале Цельсия. " +
                 "<b>(2)</b>Этот крупнейший спутник Сатурна является одним из двух небесных тел в Солнечной системе, " +
                 "на поверхности которых доказано существование жидкости. <b>(3)</b><…> в отличие от водоемов Земли, " +
-                "моря и каналы Титана образованы не водой, а углеводородами, преимущественно метаном.</i>\n\n" +
+                "моря и каналы Титана образованы не водой, а углеводородами, преимущественно метаном.</i><br><br>" +
                 "Какое из приведенных ниже слов (сочетаний слов) должно стоять на месте пропуска в третьем (3) предложении текста?",
             answers: {
                 "1": "также",
@@ -59,12 +59,12 @@ $(document).ready(function () {
             question: "Ниже приведен перечень терминов. Все они, за исключением двух, относятся к социальным " +
                 "потребностям человека. Найдите два термина, не соответствующих общему ряду слов",
             answers: {
-                "1": "В жилище",
-                "2": "В познании",
-                "3": "В общении",
-                "4": "В совместном труде",
-                "5": "В заботе",
-                "6": "В признании"
+                "1": "в жилище",
+                "2": "в познании",
+                "3": "в общении",
+                "4": "в совместном труде",
+                "5": "в заботе",
+                "6": "в признании"
             },
             correctAnswer: ["1", "2"]
         },
@@ -86,7 +86,7 @@ $(document).ready(function () {
         {
             type: "write a word",
             question: "В приведенном ниже ряду найдите понятие, которое является обобщающим для всех " +
-                "остальных понятий. Запишите это слово.\n <i>Подсистема, институт, общество, группа, личность.</i>",
+                "остальных понятий. Запишите это слово.<br><br><i>Подсистема, институт, общество, группа, личность.</i>",
             correctAnswer: "общество"
         },
         {
@@ -98,65 +98,37 @@ $(document).ready(function () {
         {
             type: "write a word",
             question: "В приведенном ниже ряду найдите понятие, которое является обобщающим для всех остальных " +
-                "представленных понятий. Запишите это слово.\n <i>Мировоззрение, знания, эмоции, ценности, поступки.</i>",
+                "представленных понятий. Запишите это слово.<br><br><i>Мировоззрение, знания, эмоции, ценности, поступки.</i>",
             correctAnswer: "мировоззрение"
         },
         {
             type: "matching",
             question: "Установите соответствие между памятником культуры (обозначено буквами) и его " +
-                "автором (обозначено цифрами).",
-            leftColumn: {
-                a: "скульптура «Медный всадник»",
-                b: "картина «Явление Христа народу»",
-                c: "мавзолей В. И. Ленина",
-                d: "«Хождение за три моря»"
-            },
-            rightColumn: {
-                "1": "К. Тон",
-                "2": "А. А. Иванов",
-                "3": "А. Никитин",
-                "4": "В. И. Суриков",
-                "5": "А. В. Щусев",
-                "6": "Э. М. Фальконе"
-            },
+                "автором (обозначено цифрами).<br><br><table><tr><td>А) скульптура «Медный всадник»<br><br>" +
+                "Б) картина «Явление Христа народу»<br><br>В) мавзолей В. И. Ленина<br><br>" +
+                "Г) «Хождение за три моря»<br></td><td>1) К. Тон<br><br>2) А. А. Иванов<br><br>3) А. Никитин<br><br>" +
+                "4) В. И. Суриков<br><br>5) А. В. Щусев<br><br>6) Э. М. Фальконе</td></tr></table>",
+            answers: ["А", "Б", "В", "Г"],
             correctAnswer: ["6", "2", "5", "3"]
         },
         {
             type: "matching",
             question: "Установите соответствие между событием (обозначено буквами) и участником " +
-                "этого события (обозначено цифрами).",
-            leftColumn: {
-                a: "«стояние» на р. Угре",
-                b: "Семилетняя война",
-                c: "Крымская война",
-                d: "наступление Вооружённых сил Юга России на Москву"
-            },
-            rightColumn: {
-                "1": "П. А. Румянцев",
-                "2": "Василий III",
-                "3": "М. Д. Скобелев",
-                "4": "Иван III",
-                "5": "Г. Я. Сокольников",
-                "6": "Н. И. Пирогов"
-            },
+                "этого события (обозначено цифрами).<br><br><table><tr><td>А) «стояние» на р. Угре<br><br>" +
+                "Б) Семилетняя война<br><br>В) Крымская война<br><br>Г) наступление Вооружённых сил Юга Росиии" +
+                "на Москву<br></td><td>1) П. А. Румянцев<br><br>2) Василий III<br><br>3) М. Д. Скобелев<br><br>" +
+                "4) Иван III<br><br>5) Г. Я. Сокольников<br><br>6) Н. И. Пирогов<br></td></tr></table>",
+            answers: ["А", "Б", "В", "Г"],
             correctAnswer: ["4", "1", "6", "5"]
         },
         {
             type: "matching",
             question: "Установите соответствие между видом мышечной ткани человека (обозначено цифрами) и " +
-                "особенностью ее строения (обозначено буквами). ",
-            leftColumn: {
-                a: "не обладает поперечной исчерченностью",
-                b: "образовалась путём слияния одноядерных клеток",
-                c: "управляется вегетативной нервной системой",
-                d: "волокна поперечно исчерчены",
-                e: "в клетках по одному ядру",
-                f: "подвластна волевому контролю"
-            },
-            rightColumn: {
-                "1": "скелетная",
-                "2": "гладкая"
-            },
+                "особенностью ее строения (обозначено буквами).<br><br><table><tr><td>А) не обладает поперечной исчерченностью" +
+                "<br><br>Б) образовалась путём слияния одноядерных клеток<br><br>В) управляется вегетативной нервной" +
+                "системой<br><br>Г) волокна поперечно исчерчены<br><br>Д) в клетках по одному ядру<br><br>" +
+                "Е) подвластна волевому контролю</td><td>1) скелетная<br><br>2) гладкая<br></td></tr></table>",
+            answers: ["А", "Б", "В", "Г", "Д", "Е"],
             correctAnswer: ["2", "1", "2", "1", "2", "1"]
         }
     ];
@@ -164,27 +136,33 @@ $(document).ready(function () {
     shuffle(allQuestions);
 
     var myQuestions = [];
-    for (var i = 0; i < 5; i++)
+    var quantity = 5;
+    for (var i = 0; i < quantity; i++)
         myQuestions.push(allQuestions[i]);
+
+    createNavBar(quantity);
 
     var quizContainer = $("#quiz");
     var resultsContainer = $("#results");
     var submitButton = $("#submit");
 
     // display quiz right away
-    buildQuiz();
+    createQuiz();
 
-    var previousButton = $("#previous");
     var nextButton = $("#next");
     var slides = $(".slide");
+    var nav = $("#nav");
+    var navBar = $("#nav span");
     var currentSlide = 0;
 
     showSlide(0);
 
     // on submit, show results
     submitButton.click(showResults);
-    previousButton.click(showPreviousSlide);
     nextButton.click(showNextSlide);
+    navBar.click(showSelectedSlide);
+
+    $(window).scroll(headerScroll);
 
     function shuffle(a) {
         var j, x;
@@ -196,8 +174,21 @@ $(document).ready(function () {
         }
         return a;
     }
+    
+    function headerScroll() {
+        if ($(window).scrollTop() > $("#header").height() * 2)
+            nav.addClass('fixed');
+        else
+            nav.removeClass('fixed');
+    }
 
-    function buildQuiz() {
+    function createNavBar(quantity) {
+        for (var i = 0; i < quantity; i++) {
+            $("#nav").append("<span>" + (i + 1) + "</span>")
+        }
+    }
+
+    function createQuiz() {
         // we'll need a place to store the HTML output
         var output = [];
 
@@ -220,7 +211,7 @@ $(document).ready(function () {
 
                 // add this question and its answers to the output
                 output.push(
-                    "<div class='slide'>" +
+                    "<div class='slide quest" + questionNumber + "'>" +
                         "<div class='question'>" + currentQuestion.question + "</div>" +
                         "<div class='answers'>" + answers.join("") + "</div>" +
                     "</div>"
@@ -237,30 +228,24 @@ $(document).ready(function () {
                     );
 
                 output.push(
-                    "<div class='slide'>" +
+                    "<div class='slide quest" + questionNumber + "'>" +
                         "<div class='question'>" + currentQuestion.question + "</div>" +
                         "<div class='answers'>" + answers.join("") + "</div>" +
                     "</div>"
                 );
 
             } else if (currentQuestion.type === "matching") {
-                var lCol = [];
-                var rCol = [];
                 var answers = [];
 
-                for (var line in currentQuestion.leftColumn) {
-                    lCol.push(line + ") " + currentQuestion.leftColumn[line]);
+                for (var ans in currentQuestion.answers)
                     answers.push(
-                        "<input type='text' name='question" + questionNumber + "'>"
-                    )
-                }
-                for (var line in currentQuestion.rightColumn)
-                    rCol.push(line + ") " + currentQuestion.rightColumn[line]);
+                        "<input type='text' name='question" + questionNumber + "' placeholder='" +
+                        currentQuestion.answers[ans] + "'>"
+                    );
 
                 output.push(
-                    "<div class='slide'>" +
+                    "<div class='slide quest" + questionNumber + "'>" +
                         "<div class='question'>" + currentQuestion.question + "</div>" +
-                        "<table border='1'><tr><td>" + lCol.join("") + "</td><td>" + rCol.join("") + "</td></tr></table>" +
                         "<div class='answers'>" + answers.join("")+ "</div>" +
                     "</div>"
                 );
@@ -268,9 +253,11 @@ $(document).ready(function () {
             } else {
 
                 output.push(
-                    "<div class='slide'>" +
+                    "<div class='slide quest" + questionNumber + "'>" +
                         "<div class='question'>" + currentQuestion.question + "</div>" +
-                        "<div class='answers'><input type='text' name='question" + questionNumber + "'></div>" +
+                        "<div class='answers'>" +
+                            "<input type='text' name='question" + questionNumber + "' placeholder='Ответ'>" +
+                        "</div>" +
                     "</div>"
                 );
             }
@@ -282,6 +269,10 @@ $(document).ready(function () {
     }
 
     function showResults() {
+
+        submitButton.css("display", "none");
+        slides.addClass("active-slide");
+        slides.addClass("result-border");
         // gather answer containers from our quiz
         var answerContainers = $(".answers");
 
@@ -292,7 +283,6 @@ $(document).ready(function () {
         myQuestions.forEach((currentQuestion, questionNumber) => {
             if (currentQuestion.type === "choose one") {
                 // find selected answer
-                // var answerContainer = answerContainers.eq(questionNumber);
                 var selector = $("input[name=question" + questionNumber + "]:checked");
                 var userAnswer = selector.first().val();
 
@@ -309,11 +299,7 @@ $(document).ready(function () {
                     answerContainers.eq(questionNumber).css("color", "red");
 
             } else if (currentQuestion.type === "choose multiply") {
-                // var answerContainer = answerContainers.eq(questionNumber);
                 var selector = $("input[name=question" + questionNumber + "]:checked");
-                // for (var ans in answerContainer.find(selector)) {
-                //     var userAnswer = ans.val();
-                // }
                 selector.each( function () {
                     if (currentQuestion.correctAnswer.includes($(this).val())) {
                         numCorrect++;
@@ -324,7 +310,6 @@ $(document).ready(function () {
             } else if (currentQuestion.type === "matching") {
                 var selector = $("input[name=question" + questionNumber + "]");
                 selector.each( function (i) {
-                    console.log(currentQuestion.correctAnswer);
                     if ($(this).val() === currentQuestion.correctAnswer[i]) {
                         numCorrect++;
                         answerContainers.eq(questionNumber).css("color", "lightgreen");
@@ -348,13 +333,11 @@ $(document).ready(function () {
     function showSlide(n) {
         slides.eq(currentSlide).removeClass("active-slide");
         slides.eq(n).addClass("active-slide");
-        currentSlide = n;
 
-        if (currentSlide === 0) {
-            previousButton.css("display", "none");
-        } else {
-            previousButton.css("display", "inline-block");
-        }
+        navBar.eq(currentSlide).removeClass("active-span");
+        navBar.eq(n).addClass("active-span");
+
+        currentSlide = n;
 
         if (currentSlide === slides.length - 1) {
             nextButton.css("display", "none");
@@ -365,11 +348,25 @@ $(document).ready(function () {
         }
     }
 
-    function showNextSlide() {
-        showSlide(currentSlide + 1);
+    function showSelectedSlide() {
+        if (slides.length === $(".active-slide").length)
+            scrollToQuest($(this));
+        else
+            showSlide($(this).text() - 1);
     }
 
-    function showPreviousSlide() {
-        showSlide(currentSlide - 1);
+    function scrollToQuest(clickedEl) {
+        navBar.removeClass("active-span");
+        clickedEl.addClass("active-span");
+
+        let id = clickedEl.text() - 1;
+        console.log(clickedEl);
+        let offs = $(".quest" + id).offset().top - nav.height() * 3;
+
+        $("html, body").animate( {scrollTop: offs}, 500);
+    }
+
+    function showNextSlide() {
+        showSlide(currentSlide + 1);
     }
 });
