@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var allQuestions = [
+    var chooseOneQ = [
         {
             type: "choose one",
             question: "В одном из приведённых ниже слов допущена ошибка в постановке ударения: НЕВЕРНО выделена " +
@@ -12,7 +12,8 @@ $(document).ready(function () {
                 "4": "нажИвший",
                 "5": "донЕльзя"
             },
-            correctAnswer: "2"
+            correctAnswer: "2",
+            score: 1
         },
         {
             type: "choose one",
@@ -28,7 +29,8 @@ $(document).ready(function () {
                 "4": "несмотря на это,",
                 "5": "а"
             },
-            correctAnswer: "3"
+            correctAnswer: "3",
+            score: 1
         },
         {
             type: "choose one",
@@ -40,8 +42,12 @@ $(document).ready(function () {
                 "3": "сОгнутый",
                 "4": "отдАв"
             },
-            correctAnswer: "2"
-        },
+            correctAnswer: "2",
+            score: 1
+        }
+    ];
+
+    var chooseMultiplyQ = [
         {
             type: "choose multiply",
             question: "Выберите верные суждения об образовании",
@@ -52,7 +58,8 @@ $(document).ready(function () {
                 "4": "В течение всей жизни человек может заниматься самообразованием",
                 "5": "Учащийся получает основное общее образование по окончании 9-ти классов"
             },
-            correctAnswer: ["3", "4", "5"]
+            correctAnswer: ["3", "4", "5"],
+            score: 3
         },
         {
             type: "choose multiply",
@@ -66,7 +73,8 @@ $(document).ready(function () {
                 "5": "в заботе",
                 "6": "в признании"
             },
-            correctAnswer: ["1", "2"]
+            correctAnswer: ["1", "2"],
+            score: 2
         },
         {
             type: "choose multiply",
@@ -81,27 +89,37 @@ $(document).ready(function () {
                 "6": "Билеты на концерт были распроданы задолго до его начала, зал был полный, всем хотелось увидеть " +
                     "популярного артиста"
             },
-            correctAnswer: ["3", "4", "6"]
-        },
+            correctAnswer: ["3", "4", "6"],
+            score: 3
+        }
+    ];
+
+    var writeAWordQ = [
         {
             type: "write a word",
             question: "В приведенном ниже ряду найдите понятие, которое является обобщающим для всех " +
                 "остальных понятий. Запишите это слово.<br><br><i>Подсистема, институт, общество, группа, личность.</i>",
-            correctAnswer: "общество"
+            correctAnswer: "общество",
+            score: 1
         },
         {
             type: "write a word",
             question: "Запишите термин, о котором идёт речь: государственные органы территориального управления " +
                 "народным хозяйством СССР с 1917 по 1932 год и период проведения экономической реформы в 1957—1965 годы.",
-            correctAnswer: "совнархозы"
+            correctAnswer: "совнархозы",
+            score: 1
         },
         {
             type: "write a word",
             question: "В приведенном ниже ряду найдите понятие, которое является обобщающим для всех остальных " +
                 "представленных понятий. Запишите это слово.<br><br><i>Мировоззрение, знания, эмоции, ценности, поступки.</i>",
-            correctAnswer: "мировоззрение"
-        },
-        {
+            correctAnswer: "мировоззрение",
+            score: 1
+        }
+    ];
+
+    var matchingQ = [
+            {
             type: "matching",
             question: "Установите соответствие между памятником культуры (обозначено буквами) и его " +
                 "автором (обозначено цифрами).<br><br><table><tr><td>А) скульптура «Медный всадник»<br><br>" +
@@ -109,7 +127,8 @@ $(document).ready(function () {
                 "Г) «Хождение за три моря»<br></td><td>1) К. Тон<br><br>2) А. А. Иванов<br><br>3) А. Никитин<br><br>" +
                 "4) В. И. Суриков<br><br>5) А. В. Щусев<br><br>6) Э. М. Фальконе</td></tr></table>",
             answers: ["А", "Б", "В", "Г"],
-            correctAnswer: ["6", "2", "5", "3"]
+            correctAnswer: ["6", "2", "5", "3"],
+            score: 4
         },
         {
             type: "matching",
@@ -119,7 +138,8 @@ $(document).ready(function () {
                 "на Москву<br></td><td>1) П. А. Румянцев<br><br>2) Василий III<br><br>3) М. Д. Скобелев<br><br>" +
                 "4) Иван III<br><br>5) Г. Я. Сокольников<br><br>6) Н. И. Пирогов<br></td></tr></table>",
             answers: ["А", "Б", "В", "Г"],
-            correctAnswer: ["4", "1", "6", "5"]
+            correctAnswer: ["4", "1", "6", "5"],
+            score: 4
         },
         {
             type: "matching",
@@ -129,37 +149,49 @@ $(document).ready(function () {
                 "системой<br><br>Г) волокна поперечно исчерчены<br><br>Д) в клетках по одному ядру<br><br>" +
                 "Е) подвластна волевому контролю</td><td>1) скелетная<br><br>2) гладкая<br></td></tr></table>",
             answers: ["А", "Б", "В", "Г", "Д", "Е"],
-            correctAnswer: ["2", "1", "2", "1", "2", "1"]
+            correctAnswer: ["2", "1", "2", "1", "2", "1"],
+            score: 6
         }
     ];
 
-    shuffle(allQuestions);
+    shuffle(chooseOneQ);
+    shuffle(chooseMultiplyQ);
+    shuffle(writeAWordQ);
+    shuffle(matchingQ);
 
     var myQuestions = [];
-    var quantity = 5;
-    for (var i = 0; i < quantity; i++)
-        myQuestions.push(allQuestions[i]);
+    myQuestions.push(chooseOneQ[0]);
+    myQuestions.push(chooseOneQ[1]);
+    myQuestions.push(chooseMultiplyQ[0]);
+    myQuestions.push(writeAWordQ[0]);
+    myQuestions.push(matchingQ[0]);
 
+    var quantity = 5;
+    var maxScore = 0;
+    for (var i = 0; i < quantity; i++)
+        maxScore += myQuestions[i].score;
+
+    var nav = $("#nav");
     createNavBar(quantity);
 
     var quizContainer = $("#quiz");
     var resultsContainer = $("#results");
     var submitButton = $("#submit");
 
-    // display quiz right away
     createQuiz();
 
     var nextButton = $("#next");
+    var again = $("#again");
     var slides = $(".slide");
-    var nav = $("#nav");
     var navBar = $("#nav span");
+    var inputSel = $("input");
     var currentSlide = 0;
 
     showSlide(0);
 
-    // on submit, show results
     submitButton.click(showResults);
     nextButton.click(showNextSlide);
+    again.click(refreshQuiz);
     navBar.click(showSelectedSlide);
 
     $(window).scroll(headerScroll);
@@ -184,24 +216,19 @@ $(document).ready(function () {
 
     function createNavBar(quantity) {
         for (var i = 0; i < quantity; i++) {
-            $("#nav").append("<span>" + (i + 1) + "</span>")
+            nav.append("<span>" + (i + 1) + "</span>")
         }
     }
 
     function createQuiz() {
-        // we'll need a place to store the HTML output
         var output = [];
 
-        // for each question...
         myQuestions.forEach((currentQuestion, questionNumber) => {
 
             if (currentQuestion.type === "choose one") {
-                // we'll want to store the list of answer choices
                 var answers = [];
 
-                // and for each available answer...
                 for (var ansNo in currentQuestion.answers)
-                    // ...add an HTML radio button
                     answers.push(
                         "<label>" +
                             "<input type='radio' name='question" + questionNumber + "' value='" + ansNo + "'>" +
@@ -209,7 +236,6 @@ $(document).ready(function () {
                         "</label>"
                     );
 
-                // add this question and its answers to the output
                 output.push(
                     "<div class='slide quest" + questionNumber + "'>" +
                         "<div class='question'>" + currentQuestion.question + "</div>" +
@@ -264,70 +290,88 @@ $(document).ready(function () {
         });
 
 
-        // finally combine our output list into one string of HTML and put it on the page
         quizContainer.prepend(output.join(""));
     }
 
     function showResults() {
+        inputSel.prop("disabled", true);
+        again.css("display", "inline-block");
 
         submitButton.css("display", "none");
         slides.addClass("active-slide");
         slides.addClass("result-border");
-        // gather answer containers from our quiz
-        var answerContainers = $(".answers");
+        // var answerContainers = $(".answers");
 
-        // keep track of user's answers
         var numCorrect = 0;
 
-        // for each question...
         myQuestions.forEach((currentQuestion, questionNumber) => {
             if (currentQuestion.type === "choose one") {
-                // find selected answer
                 var selector = $("input[name=question" + questionNumber + "]:checked");
                 var userAnswer = selector.first().val();
 
-                // if answer is correct
                 if (userAnswer === currentQuestion.correctAnswer) {
-                    // add to the number of correct answers
                     numCorrect++;
 
-                    // color the answers green
-                    answerContainers.eq(questionNumber).css("color", "lightgreen");
+                    slides.eq(questionNumber).css("border-color", "lightgreen");
                 } else
-                // if answer is wrong or blank
-                // color the answers red
-                    answerContainers.eq(questionNumber).css("color", "red");
+                    slides.eq(questionNumber).css("border-color", "red");
 
             } else if (currentQuestion.type === "choose multiply") {
-                var selector = $("input[name=question" + questionNumber + "]:checked");
+                var selector = $("input[name=question" + questionNumber + "]");
+                var isCorrect = true;
                 selector.each( function () {
-                    if (currentQuestion.correctAnswer.includes($(this).val())) {
+                    if ($(this).is(":checked") && currentQuestion.correctAnswer.includes($(this).val()))
                         numCorrect++;
-                        answerContainers.eq(questionNumber).css("color", "lightgreen");
-                    } else
-                        answerContainers.eq(questionNumber).css("color", "red");
+                    else
+                        isCorrect = false;
                 });
+
+                if (isCorrect)
+                    slides.eq(questionNumber).css("border-color", "lightgreen");
+                else
+                    slides.eq(questionNumber).css("border-color", "red");
+
+
             } else if (currentQuestion.type === "matching") {
                 var selector = $("input[name=question" + questionNumber + "]");
+                var isCorrect = true;
                 selector.each( function (i) {
-                    if ($(this).val() === currentQuestion.correctAnswer[i]) {
+                    if ($(this).val() === currentQuestion.correctAnswer[i])
                         numCorrect++;
-                        answerContainers.eq(questionNumber).css("color", "lightgreen");
-                    } else
-                        answerContainers.eq(questionNumber).css("color", "red");
+                    else
+                        isCorrect = false;
                 });
+
+                if (isCorrect)
+                    slides.eq(questionNumber).css("border-color", "lightgreen");
+                else
+                    slides.eq(questionNumber).css("border-color", "red");
+
             } else {
                 var selector = $("input[name=question" + questionNumber + "]");
                 if (selector.val() === currentQuestion.correctAnswer) {
                     numCorrect++;
-                    answerContainers.eq(questionNumber).css("color", "lightgreen");
+                    slides.eq(questionNumber).css("border-color", "lightgreen");
                 } else
-                    answerContainers.eq(questionNumber).css("color", "red");
+                    slides.eq(questionNumber).css("border-color", "red");
             }
         });
 
-        // show number of correct answers out of total
-        resultsContainer.text(numCorrect + " out of " + myQuestions.length);
+        resultsContainer.text(numCorrect + " out of " + maxScore);
+    }
+
+    function refreshQuiz() {
+        inputSel.prop("disabled", false);
+        inputSel.val("");
+        $("input:checkbox").removeAttr("checked");
+        $("input:radio").removeAttr("checked");
+        slides.removeClass("active-slide");
+        slides.removeClass("result-border");
+        resultsContainer.text("");
+
+        again.css("display", "none");
+        nextButton.css("display", "inline-block");
+        showSlide(0);
     }
 
     function showSlide(n) {

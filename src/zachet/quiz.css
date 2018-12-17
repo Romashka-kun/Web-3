@@ -69,13 +69,6 @@ td {
     border: 2px solid black;
 }
 
-#nav.fixed {
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    z-index: 1;
-}
-
 
 
 
@@ -109,11 +102,25 @@ td {
     margin: 20px auto;
 }
 
-#nav {
-    padding: 20px;
+#nav-wrapper {
+    height: 31px;
+    background-color: #fff;
+}
+
+#nav-wrapper #nav {
+    height: 31px;
+    padding: 20px 20px;
     text-align: center;
     background-color: #fff;
     border-bottom: 2px solid #0000000f;
+}
+
+#nav-wrapper #nav.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1;
 }
 
 #nav span {
@@ -130,4 +137,8 @@ td {
     border-radius: 50%;
     width: 22px;
     height: 22px;
+}
+
+#again {
+    display: none;
 }
