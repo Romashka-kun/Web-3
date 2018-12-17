@@ -263,10 +263,10 @@ $(document).ready(function () {
             } else if (currentQuestion.type === "matching") {
                 var answers = [];
 
-                for (var ans in currentQuestion.answers)
+                for (var ansNo in currentQuestion.answers)
                     answers.push(
                         "<input type='text' name='question" + questionNumber + "' placeholder='" +
-                        currentQuestion.answers[ans] + "'>"
+                        currentQuestion.answers[ansNo] + "'>"
                     );
 
                 output.push(
@@ -307,53 +307,77 @@ $(document).ready(function () {
         myQuestions.forEach((currentQuestion, questionNumber) => {
             if (currentQuestion.type === "choose one") {
                 var selector = $("input[name=question" + questionNumber + "]:checked");
-                var userAnswer = selector.first().val();
 
-                if (userAnswer === currentQuestion.correctAnswer) {
+                if (selector.val() === currentQuestion.correctAnswer) {
                     numCorrect++;
 
                     slides.eq(questionNumber).css("border-color", "lightgreen");
-                } else
+                } else {
                     slides.eq(questionNumber).css("border-color", "red");
+                    selector.parent().css("color", "red");
+                    selector.parent().css("text-decoration", "line-through");
+                    $("input[name=question" + questionNumber + "][value=" + currentQuestion.correctAnswer + "]")
+                        .parent().css("color", "lightgreen");
+                }
 
             } else if (currentQuestion.type === "choose multiply") {
                 var selector = $("input[name=question" + questionNumber + "]");
                 var isCorrect = true;
                 selector.each( function () {
-                    if ($(this).is(":checked") && currentQuestion.correctAnswer.includes($(this).val()))
+                    if ($(this).is(":checked") && currentQuestion.correctAnswer.includes($(this).val())) {
                         numCorrect++;
-                    else
+                        $(this).parent().css("color", "lightgreen");
+                    } else if ($(this).is(":checked")) {
                         isCorrect = false;
+                        numCorrect--;
+                        $(this).parent().css("color", "red");
+                        $(this).parent().css("text-decoration", "line-through");
+                    } else if (currentQuestion.correctAnswer.includes($(this).val())) {
+                        isCorrect = false;
+                        $(this).parent().css("color", "lightgreen");
+                    }
                 });
 
                 if (isCorrect)
                     slides.eq(questionNumber).css("border-color", "lightgreen");
-                else
+                else {
                     slides.eq(questionNumber).css("border-color", "red");
+                }
 
 
             } else if (currentQuestion.type === "matching") {
                 var selector = $("input[name=question" + questionNumber + "]");
                 var isCorrect = true;
                 selector.each( function (i) {
-                    if ($(this).val() === currentQuestion.correctAnswer[i])
+                    if ($(this).val() === currentQuestion.correctAnswer[i]) {
                         numCorrect++;
-                    else
+                        $(this).css("border-color", "lightgreen");
+                    } else {
                         isCorrect = false;
+                        $(this).css("border-color", "red");
+                    }
                 });
 
                 if (isCorrect)
                     slides.eq(questionNumber).css("border-color", "lightgreen");
-                else
+                else {
                     slides.eq(questionNumber).css("border-color", "red");
+                    selector.parent().append("<div>" + currentQuestion.correctAnswer.join(" ") + "</div>");
+                    selector.parent().css("color", "lightgreen");
+                }
 
             } else {
                 var selector = $("input[name=question" + questionNumber + "]");
                 if (selector.val() === currentQuestion.correctAnswer) {
                     numCorrect++;
                     slides.eq(questionNumber).css("border-color", "lightgreen");
-                } else
+                    selector.css("border-color", "lightgreen");
+                } else {
                     slides.eq(questionNumber).css("border-color", "red");
+                    selector.css("border-color", "red");
+                    selector.parent().append("<div>" +currentQuestion.correctAnswer + "</div>");
+                    selector.parent().css("color", "lightgreen");
+                }
             }
         });
 
@@ -368,6 +392,10 @@ $(document).ready(function () {
         slides.removeClass("active-slide");
         slides.removeClass("result-border");
         resultsContainer.text("");
+        $("input[type=text]").css("border-color", "initial");
+        $("input[type=text]").parent().find("div").text("");
+        $("input").parent().css("color", "initial").css("text-decoration", "none");
+
 
         again.css("display", "none");
         nextButton.css("display", "inline-block");
